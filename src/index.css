@@ -1,15 +1,19 @@
 body {
   margin: 0px;
+  color: #eaeaea;
+  background-color: #10203b;
+  font-family: Helvetica Neue, Helvetica, sans-serif;
+  font-weight: 200;
 }
 
 div {
-  border: 2px solid #eaeaea;
   box-sizing: border-box;
   /*  margin: 0;
   padding: 0;*/
 }
 
 .header {
+  background-color: #4f3915;
   height: 10vh;
 }
 
@@ -29,16 +33,19 @@ div {
 }
 
 .sidebar {
+  background-color: #10363b;
   height: 80vh;
   width: 20vw;
 }
 
 .card {
+  background-color: #15484f;
   height: 25vh;
   width: 25vw;
   /*margin: auto;*/
 }
 
 .footer {
+  background-color: #3b1610;
   height: 10vh;
 }

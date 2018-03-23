@@ -6,11 +6,7 @@ class Sidebar extends Component {
     this.state = { data: [] };
   }
   render() {
-    return (
-      <div className="sidebar">
-        <h2>Sidebar!</h2>
-      </div>
-    );
+    return <div className="sidebar">Sidebar!</div>;
   }
 }
 export default Sidebar;

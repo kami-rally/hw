@@ -6,11 +6,7 @@ class Footer extends Component {
     this.state = { data: [] };
   }
   render() {
-    return (
-      <div className="footer">
-        <h2>Footer!</h2>
-      </div>
-    );
+    return <div className="footer">Footer!</div>;
   }
 }
 export default Footer;

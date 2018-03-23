@@ -6,11 +6,7 @@ class Header extends Component {
     this.state = { data: [] };
   }
   render() {
-    return (
-      <div className="header">
-        <h2>Header!</h2>
-      </div>
-    );
+    return <div className="header">Header!</div>;
   }
 }
 export default Header;
