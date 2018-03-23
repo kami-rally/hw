@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 
-class Card extends Component {
+class Footer extends Component {
   constructor(props) {
     super(props);
     this.state = { data: [] };
   }
   render() {
     return (
-      <div className="card">
-        <h2>Card!</h2>
+      <div className="footer">
+        <h2>Footer!</h2>
       </div>
     );
   }
 }
-export default Card;
+export default Footer;

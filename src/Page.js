@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Board from './Board';
 import Header from './Header';
+import Footer from './Footer';
 import Sidebar from './Sidebar';
 import DATA from './data';
 import style from './index.css';
@@ -12,10 +13,12 @@ class Page extends Component {
   render() {
     return (
       <div className="page">
-        <h2>Page!</h2>
         <Header />
-        <Board data={DATA} />
-        <Sidebar />
+        <div className="pageContentContainer">
+          <Board data={DATA} />
+          <Sidebar />
+        </div>
+        <Footer />
       </div>
     );
   }

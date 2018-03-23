@@ -1,0 +1,44 @@
+body {
+  margin: 0px;
+}
+
+div {
+  border: 2px solid #eaeaea;
+  box-sizing: border-box;
+  /*  margin: 0;
+  padding: 0;*/
+}
+
+.header {
+  height: 10vh;
+}
+
+.pageContentContainer {
+  display: flex;
+  height: 80vh;
+}
+
+.board {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  /*  justify-content: space-evenly;
+  align-content: flex-start;*/
+  height: 80vh;
+  width: 80vw;
+}
+
+.sidebar {
+  height: 80vh;
+  width: 20vw;
+}
+
+.card {
+  height: 25vh;
+  width: 25vw;
+  /*margin: auto;*/
+}
+
+.footer {
+  height: 10vh;
+}
