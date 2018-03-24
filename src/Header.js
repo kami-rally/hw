@@ -6,7 +6,11 @@ class Header extends Component {
     this.state = { data: [] };
   }
   render() {
-    return <div className="header">Header!</div>;
+    return (
+      <div className="header">
+        <div className="header-banner">sova</div>
+      </div>
+    );
   }
 }
 export default Header;

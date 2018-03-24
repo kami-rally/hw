@@ -6,7 +6,7 @@ class Card extends Component {
     this.state = { data: [] };
   }
   render() {
-    return <div className="card">Card!</div>;
+    return <div className="card" />;
   }
 }
 export default Card;

@@ -1,51 +1,104 @@
+/*
+
+Use the following CSS rules to specify these families:
+
+font-family: 'Bungee Outline', cursive;
+font-family: 'Shrikhand', cursive;
+font-family: 'Libre Barcode 39 Extended Text', cursive;
+font-family: 'Bungee Inline', cursive;
+font-family: 'Bungee Shade', cursive;
+
+*/
+
 body {
   margin: 0px;
   color: #eaeaea;
-  background-color: #10203b;
+  background-color: #11111b;
   font-family: Helvetica Neue, Helvetica, sans-serif;
   font-weight: 200;
 }
 
 div {
   box-sizing: border-box;
-  /*  margin: 0;
-  padding: 0;*/
 }
 
 .header {
-  background-color: #4f3915;
+  display: inline-flex;
+  flex-flow: row nowrap;
+  justify-content: flex-end;
+  background-color: #1a1a28;
   height: 10vh;
+  width: 100vw;
+  padding-right: 40px;
+  padding-top: 40px;
+}
+
+.header > .header-banner {
+  font-family: 'Shrikhand', cursive;
+  /*color: #cc959c;*/
+  color: #ff7a50;
+  font-size: 45px;
 }
 
 .pageContentContainer {
   display: flex;
-  height: 80vh;
+  height: 85vh;
 }
 
 .board {
   display: flex;
   flex-flow: row wrap;
   justify-content: space-evenly;
-  /*  justify-content: space-evenly;
-  align-content: flex-start;*/
-  height: 80vh;
-  width: 80vw;
+  width: 85vw;
+  padding: 40px 15px 15px;
+  background-color: #1f1f2b;
+  border-radius: 0px 3px 3px 0px;
 }
 
 .sidebar {
-  background-color: #10363b;
-  height: 80vh;
-  width: 20vw;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: flex-start;
+  align-items: center;
+  /*background-color: #11111b;*/
+  width: 15vw;
+  padding-top: 35px;
+}
+
+.progressBar {
+  width: 200px;
+  height: 50px;
+  background-color: #40575a;
+  margin-top: 50px;
+  opacity: 0.85;
+}
+
+.progressBar:hover {
+  background-color: #76a2a2;
+  opacity: 1;
+}
+
+.photo {
+  border-radius: 150px;
+  height: 150px;
+  width: 150px;
+  background-color: #47445a;
 }
 
 .card {
-  background-color: #15484f;
+  border-radius: 15px;
+  /*border-radius: 20px;*/
+  background-color: #080f10;
   height: 25vh;
   width: 25vw;
   /*margin: auto;*/
 }
 
+.card:hover {
+  border: 1px dashed turquoise;
+}
+
 .footer {
-  background-color: #3b1610;
-  height: 10vh;
+  background-color: #1a1a28;
+  height: 5vh;
 }

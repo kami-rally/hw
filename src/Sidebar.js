@@ -6,7 +6,15 @@ class Sidebar extends Component {
     this.state = { data: [] };
   }
   render() {
-    return <div className="sidebar">Sidebar!</div>;
+    return (
+      <div className="sidebar">
+        <div className="photo" />
+        <div className="progressBar" />
+        <div className="progressBar" />
+        <div className="progressBar" />
+        <div className="progressBar" />
+      </div>
+    );
   }
 }
 export default Sidebar;
