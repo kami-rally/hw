@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 
-class Header extends Component {
+class Footer extends Component {
   constructor(props) {
     super(props);
     this.state = { data: [] };
   }
   render() {
     return (
-      <div className="header">
-        <div className="header-banner">sova</div>
+      <div className="footer">
+        <div className="log-out-link">log out</div>
       </div>
     );
   }
 }
-export default Header;
+export default Footer;
