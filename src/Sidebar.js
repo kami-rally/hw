@@ -9,6 +9,7 @@ class Sidebar extends Component {
     return (
       <div className="sidebar">
         <div className="photo" />
+        <div className="goals-title">goals</div>
         <div className="progressBar" />
         <div className="progressBar" />
         <div className="progressBar" />

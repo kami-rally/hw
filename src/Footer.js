@@ -6,7 +6,11 @@ class Footer extends Component {
     this.state = { data: [] };
   }
   render() {
-    return <div className="footer" />;
+    return (
+      <div className="footer">
+        <div className="log-out-link">log out</div>
+      </div>
+    );
   }
 }
 export default Footer;

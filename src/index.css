@@ -1,7 +1,5 @@
 /*
 
-Use the following CSS rules to specify these families:
-
 font-family: 'Bungee Outline', cursive;
 font-family: 'Shrikhand', cursive;
 font-family: 'Libre Barcode 39 Extended Text', cursive;
@@ -65,11 +63,18 @@ div {
   padding-top: 35px;
 }
 
+.goals-title {
+  color: #ff7a50;
+  font-size: 22px;
+  font-family: 'Petit Formal Script';
+  margin-top: 25px;
+}
+
 .progressBar {
   width: 200px;
   height: 50px;
   background-color: #40575a;
-  margin-top: 50px;
+  margin-top: 25px;
   opacity: 0.85;
 }
 
@@ -99,6 +104,23 @@ div {
 }
 
 .footer {
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
   background-color: #1a1a28;
   height: 5vh;
+  padding-right: 15px;
+  padding-bottom: 10px;
+}
+
+.log-out-link {
+  color: #47445a;
+  font-size: 18px;
+  font-family: 'Petit Formal Script';
+}
+
+.log-out-link:hover,
+.log-out-link:target,
+.log-out-link:focus {
+  color: #40575a;
 }
