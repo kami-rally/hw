@@ -33,6 +33,27 @@ router.get('/', function(req, res) {
   res.json({ message: 'API Initialized!' });
 });
 
+router
+  .route('/cards')
+  .get(function(req, res) {
+    Card.find(function(err, cards) {
+      if (err) {
+        res.send(err);
+      }
+      res.json(cards);
+    });
+  })
+  .post(function(req, res) {
+    var card = new Card();
+    card.title = req.query.title;
+    card.save(function(err) {
+      if (err) {
+        res.send(err);
+      }
+      res.json({ message: `New card '${card.title}' successfully added!` });
+    });
+  });
+
 app.use('/api', router);
 
 app.listen(port, function() {
