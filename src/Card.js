@@ -6,7 +6,7 @@ class Card extends Component {
     this.state = { data: [] };
   }
   render() {
-    return <div className="card" />;
+    return <div className="card">{this.props.title}</div>;
   }
 }
 export default Card;
