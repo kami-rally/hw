@@ -7,18 +7,10 @@ class Board extends Component {
     this.state = { data: [] };
   }
   render() {
-    return (
-      <div className="board">
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-        <Card />
-      </div>
-    );
+    let cardNodes = this.props.data.map(card => {
+      return <Card title={card.title} key={card['_id']} />;
+    });
+    return <div className="board">{cardNodes}</div>;
   }
 }
 export default Board;
