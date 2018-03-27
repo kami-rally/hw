@@ -7,7 +7,6 @@ class Board extends Component {
     this.state = { data: [] };
   }
   render() {
-    debugger;
     let cardNodes = this.props.data.map(card => {
       return <Card title={card.title} key={card['_id']} />;
     });
