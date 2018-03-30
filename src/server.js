@@ -23,6 +23,12 @@ const client = new FitbitApiClient({
 
 mongoose.connect('mongodb://kamimern:falafel@ds121089.mlab.com:21089/mern');
 
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  // we're connected!
+});
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
@@ -56,6 +62,7 @@ router.route('/authorize').get(function(req, res) {
 // })
 
 router.get('/callback', function(req, res) {
+  console.log('callback');
   // res.json({ response: res.code });
   // res.redirect('http://localhost:3000/');
   // debugger;
@@ -76,12 +83,22 @@ router.get('/callback', function(req, res) {
         .then(results => {
           // res.send(results[0]);
 
+          // var day = new StepsDay();
+          // day.date = new Date('2011-12-12');
+          // day.step_count = 1234;
+          // day.save(function(err, day) {
+          //   if (err) return console.error(err);
+          //   console.log(day.step_count);
+          // });
+
           for (var step_day of results[0]['activities-steps']) {
-            var date = new Date(step_day['dateTime']);
-            var steps = parseInt(step_day['value']);
-            // day = new StepsDay({ date: date, step_count: steps });
-            // console.log(day.date);
-            console.log(date);
+            var day = new StepsDay();
+            day.date = new Date(step_day['dateTime']);
+            day.step_count = parseInt(step_day['value']);
+            day.save(function(err, day) {
+              if (err) return console.error(err);
+              console.log(day.steps);
+            });
           }
         })
         .catch(err => {
