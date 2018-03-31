@@ -8,7 +8,7 @@ class Board extends Component {
   }
   render() {
     let cardNodes = this.props.data.map(card => {
-      return <Card title={card.title} key={card['_id']} />;
+      return <Card endpoint={card.endpoint} title={card.title} key={card['_id']} />;
     });
     return <div className="board">{cardNodes}</div>;
   }
