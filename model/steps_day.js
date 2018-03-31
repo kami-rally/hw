@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var StepsDaySchema = new Schema({
-  date: Date,
+  date: String,
   step_count: Number,
 });
 
