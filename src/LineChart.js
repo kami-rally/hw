@@ -29,7 +29,7 @@ export default class LineChart extends Component {
       chart: {
         backgroundColor: '#48485b',
         borderRadius: '5px',
-        type: 'line',
+        type: 'spline',
       },
       title: {
         text: title,
@@ -43,6 +43,11 @@ export default class LineChart extends Component {
           text: 'date',
           style: { color: '#ff7a50' },
         },
+        type: 'datetime',
+        // dateTimeLabelFormats: { // don't display the dummy year
+        //     month: '%e. %b',
+        //     year: '%b'
+        // },
 
         labels: {
           // style: { color: '#ff7a50' },
@@ -62,7 +67,7 @@ export default class LineChart extends Component {
       },
       series: [
         {
-          name: 'steps',
+          name: title,
           data: data,
         },
       ],

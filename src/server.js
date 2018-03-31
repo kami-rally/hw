@@ -92,38 +92,40 @@ router.route('/callback').get(function(req, res) {
 });
 
 router.route('/steps').get(function(req, res) {
-  StepsDay.find(function(err, stepsDays) {
-    if (err) {
-      res.send(err);
-    }
-    var results = stepsDays.map(s => s.step_count);
-    res.json(results);
-  });
+  StepsDay.find()
+    .sort('date')
+    .exec(function(err, stepsDays) {
+      if (err) {
+        res.send(err);
+      }
+      var results = stepsDays.map(s => [new Date(s.date), s.step_count]);
+      res.json(results.slice(0, 15));
+    });
 });
 
 router.route('/sleep').get(function(req, res) {
-  SleepHours.find(function(err, sleepHours) {
-    if (err) {
-      res.send(err);
-    }
-    var results = sleepHours.map(s => s.duration);
-    res.json(results);
-  });
+  SleepHours.find()
+    .sort('date')
+    .exec(function(err, sleepHours) {
+      if (err) {
+        res.send(err);
+      }
+      var results = sleepHours.map(s => [new Date(s.date), s.duration / 3600000.0]);
+      res.json(results.slice(0, 15));
+    });
 });
 
 router.route('/heartrate').get(function(req, res) {
-  HeartDay.find(function(err, heartDays) {
-    if (err) {
-      res.send(err);
-    }
-    var results = heartDays.map(h => h.heart_rate);
-    res.json(results);
-  });
+  HeartDay.find()
+    .sort('date')
+    .exec(function(err, heartDays) {
+      if (err) {
+        res.send(err);
+      }
+      var results = heartDays.map(h => [new Date(h.date), h.heart_rate]);
+      res.json(results.slice(0, 15));
+    });
 });
-
-// router.route('/heart').get(function(req, res) {
-//   res.redirect(client.get('/activities/heart/date/2018-03-01/1m.json'))
-// })
 
 app.listen(port, function() {
   console.log(`api running on port ${port}`);
