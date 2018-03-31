@@ -12,17 +12,12 @@ class Page extends Component {
     super(props);
     this.state = { data: [] };
     this.loadCardsFromServer = this.loadCardsFromServer.bind(this);
-    this.handleCardSubmit = this.handleCardSubmit.bind(this);
   }
 
   loadCardsFromServer() {
     axios.get(this.props.url).then(res => {
       this.setState({ data: res.data });
     });
-  }
-
-  handleCardSubmit(card) {
-    // handle card post action
   }
 
   componentDidMount() {

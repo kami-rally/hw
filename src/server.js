@@ -68,38 +68,23 @@ router.route('/callback').get(function(req, res) {
     .getAccessToken(req.query.code, 'http://localhost:3001/api/callback')
     .then(result => {
       // use the access token to fetch the user's profile information
-
-      client
-        .get('/sleep/date/2017-01-01/2017-03-30.json', result.access_token)
-        .then(results => {
-          // console.log(results[0]['sleep'][0]);
-          // var raw_day = results[0]['sleep'][0];
-          // var day = new SleepHours();
-          // console.log(day);
-          // console.log(raw_day['dateOfSleep']);
-          // console.log(raw_day['duration']);
-          // console.log(raw_day['efficiency']);
-          // day.date = raw_day['date'];
-          // day.duration = raw_day['duration'];
-          // day.efficiency = raw_day['efficiency'];
-          // day.save(function(err, day) {
-          //   if (err) return console.error(err);
-          // });
-
-          for (var sleep_day of results[0]['sleep']) {
-            var day = new SleepHours();
-            day.date = sleep_day['dateOfSleep'];
-            day.duration = parseInt(sleep_day['duration']);
-            day.efficiency = parseInt(sleep_day['efficiency']);
-            day.save(function(err, day) {
-              if (err) return console.error(err);
-              console.log(day.steps);
-            });
-          }
-        })
-        .catch(err => {
-          res.status(err.status).send(err);
-        });
+      // client
+      //   .get('/sleep/date/2017-01-01/2017-03-30.json', result.access_token)
+      //   .then(results => {
+      //     for (var sleep_day of results[0]['sleep']) {
+      //       var day = new SleepHours();
+      //       day.date = sleep_day['dateOfSleep'];
+      //       day.duration = parseInt(sleep_day['duration']);
+      //       day.efficiency = parseInt(sleep_day['efficiency']);
+      //       day.save(function(err, day) {
+      //         if (err) return console.error(err);
+      //         console.log(day.steps);
+      //       });
+      //     }
+      //   })
+      //   .catch(err => {
+      //     res.status(err.status).send(err);
+      //   });
     })
     .catch(err => {
       res.status(err.status).send(err);
@@ -107,25 +92,23 @@ router.route('/callback').get(function(req, res) {
 });
 
 router.route('/steps').get(function(req, res) {
-  // StepsDay.find(function(err, steps_days) {
-  //   if (err) {
-  //     res.send(err);
-  //   }
-  //   var results = steps_days.map(s => s.step_count);
-  //   res.json(results);
-  // });
-  res.json('steps');
+  StepsDay.find(function(err, steps_days) {
+    if (err) {
+      res.send(err);
+    }
+    var results = steps_days.map(s => s.step_count);
+    res.json(results);
+  });
 });
 
 router.route('/sleep').get(function(req, res) {
-  // SleepHours.find(function(err, steps_days) {
-  //   if (err) {
-  //     res.send(err);
-  //   }
-  //   var results = steps_days.map(s => s.step_count);
-  //   res.json(results);
-  // });
-  res.json('sleep');
+  SleepHours.find(function(err, sleep_hours) {
+    if (err) {
+      res.send(err);
+    }
+    var results = sleep_hours.map(s => s.duration);
+    res.json(results);
+  });
 });
 
 // router.route('/heart').get(function(req, res) {

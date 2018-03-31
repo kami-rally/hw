@@ -2,32 +2,55 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import LineChart from './LineChart';
 
-class Card extends Component {
+export default class Card extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: [] };
-    this.loadDataFromServer = this.loadDataFromServer.bind(this);
-  }
-
-  loadDataFromServer() {
-    axios.get(this.props.endpoint).then(res => {
-      this.setState({ data: res.data });
-      this.forceUpdate();
-    });
+    this.state = {
+      error: null,
+      isLoaded: false,
+      data: [],
+      className: `card ${props.title}`,
+      title: props.title,
+    };
   }
 
   componentDidMount() {
-    this.loadDataFromServer();
+    axios.get(this.props.endpoint).then(
+      result => {
+        this.setState({
+          isLoaded: true,
+          data: result.data,
+        });
+      },
+      error => {
+        this.setState({
+          isLoaded: true,
+          error,
+        });
+      }
+    );
   }
 
   render() {
-    const chartData = this.state.data;
-
-    return (
-      <div className="card">
-        <LineChart data={chartData} />
-      </div>
-    );
+    const { error, isLoaded, data, className, title } = this.state;
+    if (error) {
+      return (
+        <div title={title} className={className}>
+          Error: {error.message}
+        </div>
+      );
+    } else if (!isLoaded) {
+      return (
+        <div title={title} className={className}>
+          Loading...
+        </div>
+      );
+    } else {
+      return (
+        <div className={className}>
+          <LineChart title={title} data={data} />
+        </div>
+      );
+    }
   }
 }
-export default Card;
