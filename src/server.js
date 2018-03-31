@@ -9,6 +9,7 @@ var FitbitApiClient = require('fitbit-node');
 
 var Card = require('../model/cards');
 var StepsDay = require('../model/steps_day');
+var HeartDay = require('../model/heart_day');
 var SleepHours = require('../model/sleep_hours');
 
 var app = express();
@@ -92,21 +93,31 @@ router.route('/callback').get(function(req, res) {
 });
 
 router.route('/steps').get(function(req, res) {
-  StepsDay.find(function(err, steps_days) {
+  StepsDay.find(function(err, stepsDays) {
     if (err) {
       res.send(err);
     }
-    var results = steps_days.map(s => s.step_count);
+    var results = stepsDays.map(s => s.step_count);
     res.json(results);
   });
 });
 
 router.route('/sleep').get(function(req, res) {
-  SleepHours.find(function(err, sleep_hours) {
+  SleepHours.find(function(err, sleepHours) {
     if (err) {
       res.send(err);
     }
-    var results = sleep_hours.map(s => s.duration);
+    var results = sleepHours.map(s => s.duration);
+    res.json(results);
+  });
+});
+
+router.route('/heartrate').get(function(req, res) {
+  HeartDay.find(function(err, heartDays) {
+    if (err) {
+      res.send(err);
+    }
+    var results = heartDays.map(h => h);
     res.json(results);
   });
 });

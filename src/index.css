@@ -60,6 +60,7 @@ div {
   padding: 40px 15px 15px;
   background-color: #1f1f2b;
   border-radius: 0px 3px 3px 0px;
+  overflow-y: scroll;
 }
 
 .sidebar {
@@ -108,6 +109,7 @@ div {
   height: 42vh;
   width: 37vw;
   padding: 25px;
+  margin: 25px;
 }
 
 .card:hover {
