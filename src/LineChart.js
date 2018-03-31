@@ -39,15 +39,16 @@ export default class LineChart extends Component {
         enabled: false,
       },
       xAxis: {
+        type: 'datetime',
         title: {
           text: 'date',
           style: { color: '#ff7a50' },
         },
-        type: 'datetime',
-        // dateTimeLabelFormats: { // don't display the dummy year
-        //     month: '%e. %b',
-        //     year: '%b'
-        // },
+
+        dateTimeLabelFormats: {
+          month: '%e. %b',
+          //     year: '%b'
+        },
 
         labels: {
           // style: { color: '#ff7a50' },
@@ -63,6 +64,13 @@ export default class LineChart extends Component {
 
         labels: {
           // style: { color: '#ff7a50' },
+        },
+      },
+      plotOptions: {
+        spline: {
+          marker: {
+            enabled: true,
+          },
         },
       },
       series: [

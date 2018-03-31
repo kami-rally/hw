@@ -98,8 +98,8 @@ router.route('/steps').get(function(req, res) {
       if (err) {
         res.send(err);
       }
-      var results = stepsDays.map(s => [new Date(s.date), s.step_count]);
-      res.json(results.slice(0, 15));
+      var results = stepsDays.map(s => [Date.parse(s.date), s.step_count]);
+      res.json(results.slice(0, 25));
     });
 });
 
@@ -110,8 +110,8 @@ router.route('/sleep').get(function(req, res) {
       if (err) {
         res.send(err);
       }
-      var results = sleepHours.map(s => [new Date(s.date), s.duration / 3600000.0]);
-      res.json(results.slice(0, 15));
+      var results = sleepHours.map(s => [Date.parse(s.date), s.duration / 3600000.0]);
+      res.json(results.slice(0, 25));
     });
 });
 
@@ -122,8 +122,8 @@ router.route('/heartrate').get(function(req, res) {
       if (err) {
         res.send(err);
       }
-      var results = heartDays.map(h => [new Date(h.date), h.heart_rate]);
-      res.json(results.slice(0, 15));
+      var results = heartDays.map(h => [Date.parse(h.date), h.heart_rate]);
+      res.json(results.slice(0, 25));
     });
 });
 
