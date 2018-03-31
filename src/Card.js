@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-var d3 = require('d3');
+import LineChart from './LineChart';
 
 class Card extends Component {
   constructor(props) {
@@ -11,8 +11,8 @@ class Card extends Component {
 
   loadDataFromServer() {
     axios.get(this.props.endpoint).then(res => {
-      debugger;
       this.setState({ data: res.data });
+      this.forceUpdate();
     });
   }
 
@@ -21,10 +21,11 @@ class Card extends Component {
   }
 
   render() {
+    const chartData = this.state.data;
+
     return (
       <div className="card">
-        <span className="card-title">{this.props.title}</span>
-        <span className="card-data" />
+        <LineChart data={chartData} />
       </div>
     );
   }

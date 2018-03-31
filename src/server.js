@@ -64,7 +64,18 @@ router.route('/steps').get(function(req, res) {
     if (err) {
       res.send(err);
     }
-    res.json(steps_days);
+    var results = steps_days.map(s => s.step_count);
+    res.json(results);
+  });
+});
+
+router.route('/sleep').get(function(req, res) {
+  SleepDay.find(function(err, sleep_days) {
+    if (err) {
+      res.send(err);
+    }
+    var results = sleep_days.map(s => s.sleep_hours);
+    res.json(results);
   });
 });
 

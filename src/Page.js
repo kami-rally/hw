@@ -5,6 +5,7 @@ import Header from './Header';
 import Footer from './Footer';
 import Sidebar from './Sidebar';
 import style from './index.css';
+import Highcharts from 'highcharts';
 
 class Page extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class Page extends Component {
 
   componentDidMount() {
     this.loadCardsFromServer();
-    setInterval(this.loadCardsFromServer, this.props.pollInterval);
+    // setInterval(this.loadCardsFromServer, this.props.pollInterval);
   }
 
   render() {

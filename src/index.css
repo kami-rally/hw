@@ -8,6 +8,15 @@ font-family: 'Bungee Shade', cursive;
 
 */
 
+#highchart {
+  width: 100%;
+  height: 375px;
+}
+
+.highcharts-credits {
+  display: none;
+}
+
 body {
   margin: 0px;
   color: #eaeaea;
@@ -96,8 +105,8 @@ div {
   align-items: flex-start;
   border-radius: 15px;
   background-color: #080f10;
-  height: 25vh;
-  width: 25vw;
+  height: 40vh;
+  width: 40vw;
   padding: 25px;
 }
 
