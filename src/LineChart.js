@@ -45,10 +45,9 @@ export default class LineChart extends Component {
           style: { color: '#ff7a50' },
         },
 
-        dateTimeLabelFormats: {
-          month: '%e. %b',
-          //     year: '%b'
-        },
+        // dateTimeLabelFormats: {
+        //   // month: '%e %b',
+        // },
 
         labels: {
           // style: { color: '#ff7a50' },

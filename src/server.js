@@ -65,6 +65,18 @@ router.route('/authorize').get(function(req, res) {
 });
 
 router.route('/callback').get(function(req, res) {
+  // StepsDay.find().exec(function(err, stepsDays) {
+  //   if (err) {
+  //     res.send(err);
+  //   }
+  //   for (var stepsday of stepsDays) {
+  //     stepsday.date = new Date(stepsday.date).toISOString().slice(0, 10);
+  //     stepsday.save(function(err, day) {
+  //       if (err) return console.error(err);
+  //       console.log(day.date);
+  //     });
+  //   }
+  // });
   // client
   //   .getAccessToken(req.query.code, 'http://localhost:3001/api/callback')
   //   .then(result => {
@@ -92,38 +104,47 @@ router.route('/callback').get(function(req, res) {
 });
 
 router.route('/steps').get(function(req, res) {
-  StepsDay.find()
+  var start = '2017-04-01';
+  var end = '2017-06-01';
+  StepsDay.find({ date: { $gte: start, $lt: end } })
     .sort('date')
     .exec(function(err, stepsDays) {
       if (err) {
         res.send(err);
       }
       var results = stepsDays.map(s => [Date.parse(s.date), s.step_count]);
-      res.json(results.slice(0, 25));
+      res.json(results);
+      // res.json(results.slice(0, 25));
     });
 });
 
 router.route('/sleep').get(function(req, res) {
-  SleepHours.find()
+  var start = '2017-04-01';
+  var end = '2017-06-01';
+  SleepHours.find({ date: { $gte: start, $lt: end } })
     .sort('date')
     .exec(function(err, sleepHours) {
       if (err) {
         res.send(err);
       }
       var results = sleepHours.map(s => [Date.parse(s.date), s.duration / 3600000.0]);
-      res.json(results.slice(0, 25));
+      res.json(results);
+      // res.json(results.slice(0, 25));
     });
 });
 
 router.route('/heartrate').get(function(req, res) {
-  HeartDay.find()
+  var start = '2017-04-01';
+  var end = '2017-06-01';
+  HeartDay.find({ date: { $gte: start, $lt: end } })
     .sort('date')
     .exec(function(err, heartDays) {
       if (err) {
         res.send(err);
       }
       var results = heartDays.map(h => [Date.parse(h.date), h.heart_rate]);
-      res.json(results.slice(0, 25));
+      res.json(results);
+      // res.json(results.slice(0, 25));
     });
 });
 
