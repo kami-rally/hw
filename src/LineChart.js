@@ -18,7 +18,7 @@ export default class LineChart extends Component {
   }
 
   makeHighchart() {
-    debugger;
+    // debugger;
     var data = [
       0,
       9098,
@@ -388,7 +388,7 @@ export default class LineChart extends Component {
     ];
     var myChart = Highcharts.chart('highchart', {
       chart: {
-        backgroundColor: '#3d4551',
+        backgroundColor: '#48485b',
         borderRadius: '5px',
         type: 'line',
       },
