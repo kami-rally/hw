@@ -5,7 +5,7 @@ var Schema = mongoose.Schema;
 
 var HeartDaySchema = new Schema({
   date: String,
-  step_count: Number,
+  heart_rate: Number,
 });
 
 module.exports = mongoose.model('HeartDay', HeartDaySchema);

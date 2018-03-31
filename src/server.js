@@ -69,23 +69,22 @@ router.route('/callback').get(function(req, res) {
     .getAccessToken(req.query.code, 'http://localhost:3001/api/callback')
     .then(result => {
       // use the access token to fetch the user's profile information
-      // client
-      //   .get('/sleep/date/2017-01-01/2017-03-30.json', result.access_token)
-      //   .then(results => {
-      //     for (var sleep_day of results[0]['sleep']) {
-      //       var day = new SleepHours();
-      //       day.date = sleep_day['dateOfSleep'];
-      //       day.duration = parseInt(sleep_day['duration']);
-      //       day.efficiency = parseInt(sleep_day['efficiency']);
-      //       day.save(function(err, day) {
-      //         if (err) return console.error(err);
-      //         console.log(day.steps);
-      //       });
-      //     }
-      //   })
-      //   .catch(err => {
-      //     res.status(err.status).send(err);
-      //   });
+      client
+        .get('/activities/heart/date/2017-04-01/2018-03-30.json', result.access_token)
+        .then(results => {
+          for (var heartday of results[0]['activities-heart']) {
+            var day = new HeartDay();
+            day.date = heartday['dateTime'];
+            day.heart_rate = parseInt(heartday['value']['restingHeartRate']);
+            day.save(function(err, day) {
+              if (err) return console.error(err);
+              console.log(day.heart_rate);
+            });
+          }
+        })
+        .catch(err => {
+          res.status(err.status).send(err);
+        });
     })
     .catch(err => {
       res.status(err.status).send(err);
